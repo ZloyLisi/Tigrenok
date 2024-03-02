@@ -1,0 +1,39 @@
+﻿<Window x:Class="BigBoars.View.Zoo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BigBoars.View"
+        mc:Ignorable="d"
+        Title="Zoo" Height="450" Width="800"
+    xmlns:ViewModel="clr-namespace:BigBoars.ViewModel">
+    <Window.DataContext>
+        <ViewModel:InfoZoo />
+    </Window.DataContext>
+    <Grid>
+        <StackPanel>
+            <Label HorizontalAlignment="Center">Качесво животного</Label>
+            <TextBox x:Name="tbAdd"
+                     Width="500"></TextBox>
+            <Label HorizontalAlignment="Center">Название животного(password)</Label>
+            <TextBox x:Name="tbAdd2"
+                     Width="500"></TextBox>
+            <Button Width="500" Content="Региcтрация жЫвотного"
+                    Click="Button_Click"></Button>
+            <Button Width="500"
+                    Content="Обновить жЫвотных"
+                    Command="{Binding Update}" Click="Button_Click_1"></Button>
+            <ListView ItemsSource="{Binding ZooList}">
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <Label Content="{Binding Name}"></Label>
+                            <Label Content="{Binding Password}"></Label>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</Window>
